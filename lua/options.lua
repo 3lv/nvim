@@ -11,6 +11,8 @@ vim.o.switchbuf = "useopen"
 vim.o.guicursor = ""
 vim.o.inccommand = "split"
 
+vim.o.completeopt = "menuone,noselect"
+
 -- Indent options
 vim.o.tabstop=4
 vim.o.shiftwidth=4

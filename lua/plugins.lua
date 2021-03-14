@@ -10,15 +10,21 @@ end
 
 return require('packer').startup{function()
 
-	--Packer manages itself VV
+	-- Packer manages itself VV
 	use {'wbthomason/packer.nvim', opt = true}
 
 
 	use {'kyazdani42/nvim-tree.lua'}
 	
-	--LSP
+	-- LSP
 	use {'neovim/nvim-lspconfig'}
 	use {'hrsh7th/nvim-compe'}
-	use {'vim-vsnip'}
+	use {'hrsh7th/vim-vsnip'}
+
+	-- Colors
+	use {'nvim-treesitter/nvim-treesitter'}
+
+	-- Status line
+	--use {'glepnir/galaxyline.nvim',
 
 end}

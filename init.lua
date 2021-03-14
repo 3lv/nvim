@@ -8,5 +8,8 @@ require('options')
 require('keymappings')
 
 -- Setup cpp language server
-require('lsp_cpp')
+require('lsp.cpp')
+
+-- Config plugins
+require('config')
 
