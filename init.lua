@@ -1,4 +1,6 @@
--- Install plugins require('plugins')
+-- Install plugins
+require('plugins')
+
 -- 'set/let' options
 require('options')
 
