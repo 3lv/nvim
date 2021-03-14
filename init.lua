@@ -10,5 +10,5 @@ require('keymappings')
 -- Setup cpp language server
 require('lsp.cpp')
 
--- Configure plugins
-require('config')
+-- Configure plugins the plugin manager should do that
+-- require('config')

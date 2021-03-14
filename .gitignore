@@ -2,6 +2,7 @@
 backup/
 undodir/
 tmp/
+packer_compiled.vim
 
 #from plugins
 plugged/

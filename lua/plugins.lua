@@ -14,17 +14,18 @@ return require('packer').startup{function()
 	use {'wbthomason/packer.nvim', opt = true}
 
 
+	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
+
 	-- Tree explorer
-	use {'kyazdani42/nvim-tree.lua'}
-	use {'kyazdani42/nvim-web-devicons'}
+	use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	
 	-- LSP
 	use {'neovim/nvim-lspconfig'}
-	use {'hrsh7th/nvim-compe'}
+	use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
 	use {'hrsh7th/vim-vsnip'}
 
 	-- Colors
-	use {'nvim-treesitter/nvim-treesitter'}
+	use {'nvim-treesitter/nvim-treesitter', config = function() require'config.nvim-treesitter' end}
 	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
 	-- Status line
@@ -32,9 +33,21 @@ return require('packer').startup{function()
 	  'glepnir/galaxyline.nvim',
 		branch = 'main',
 		-- your statusline
-		config = function() require'my_statusline' end,
+		config = function() require'config.galaxyline' end,
 		-- some optional icons
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
+
+	--[[
+	use {
+	  'lewis6991/gitsigns.nvim',
+	  requires = {
+		'nvim-lua/plenary.nvim'
+	  },
+	  config = function()
+		require('config.gitsigns').setup()
+	  end
+	}
+	--]]
 
 end}
