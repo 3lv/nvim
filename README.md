@@ -1,12 +1,15 @@
 
+##Install config
 
-Install neovim
-```
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o /usr/bin/nvim
-chmod u+x /usr/bin/nvim
-```
+Prerequires:
+	* nvim 0.5+
+	* (optional) LSP: ccls
 
-Install config
-```
+> backup ~/.config/nvim if you have any:
+> mv ~/.config/nvim ~/.config/nvim-backup
+
+##Install config
+```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
 ```
+

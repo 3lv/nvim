@@ -1,15 +1,12 @@
--- Install plugins
-require('plugins')
-
+-- Install plugins require('plugins')
 -- 'set/let' options
 require('options')
 
--- keymappings
+-- Keymappings
 require('keymappings')
 
 -- Setup cpp language server
 require('lsp.cpp')
 
--- Config plugins
+-- Configure plugins
 require('config')
-

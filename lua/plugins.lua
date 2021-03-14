@@ -14,7 +14,9 @@ return require('packer').startup{function()
 	use {'wbthomason/packer.nvim', opt = true}
 
 
+	-- Tree explorer
 	use {'kyazdani42/nvim-tree.lua'}
+	use {'kyazdani42/nvim-web-devicons'}
 	
 	-- LSP
 	use {'neovim/nvim-lspconfig'}
@@ -23,8 +25,11 @@ return require('packer').startup{function()
 
 	-- Colors
 	use {'nvim-treesitter/nvim-treesitter'}
+	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
 	-- Status line
 	--use {'glepnir/galaxyline.nvim',
+	
+	
 
 end}

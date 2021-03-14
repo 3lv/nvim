@@ -1,3 +1,5 @@
 require('config.compe')
 require('config.nvim-tree')
 require('config.nvim-treesitter')
+require('config.nvim-web-devicons')
+require('config.colorscheme')

@@ -8,6 +8,7 @@ vim.bo.undofile = true
 vim.o.switchbuf = "useopen"
 
 
+vim.o.termguicolors = true
 vim.o.guicursor = ""
 vim.o.inccommand = "split"
 
