@@ -1,0 +1,8 @@
+#tmp files
+backup/
+undodir/
+tmp/
+
+#from plugins
+plugged/
+.netrwhist
