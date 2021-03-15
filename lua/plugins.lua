@@ -13,6 +13,12 @@ return require('packer').startup{function()
 	-- Packer manages itself VV
 	use {'wbthomason/packer.nvim'}
 
+	--REALLY NEED A NVIM LUA QUICK-SCOPE
+	--use {'unblevable/quick-scope', config = function() require'config.quick-scope' end}
+
+
+	use {'TimUntersberger/neogit', config = function() require'config.neogit' end}
+
 
 	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
 
