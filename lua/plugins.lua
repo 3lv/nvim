@@ -18,6 +18,8 @@ return require('packer').startup{function()
 
 	-- Tree explorer
 	use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+	-- Terminal toggle
+	use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
 	
 	-- LSP
 	use {'neovim/nvim-lspconfig'}

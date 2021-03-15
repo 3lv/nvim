@@ -36,11 +36,11 @@ augroups(
 		{
 			{'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'IncSearch\', timeout = 200})'},
         },
-		_cpp_settings =
+		_cpp_mappings =
 		{
-			{'FileType', 'cpp', 'nnoremap <silent> <F2> :bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
-			{'FileType', 'cpp', 'nnoremap <silent> <F3> :bel sp %:r.out <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
-			{'FileType', 'cpp', [[nnoremap <cilent> <C-c> <Cmd>s@^\(\s*\)@\1//@e<CR> <Cmd>s@^\(\s*\)////@\1@e]]},
+			{'FileType', 'cpp', 'nnoremap <silent> <F2> <Cmd>bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', 'nnoremap <silent> <F3> <Cmd>bel sp %:r.out <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', [[nnoremap <silent> <C-c> <Cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
 
 		},
     }
