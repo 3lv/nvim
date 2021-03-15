@@ -312,7 +312,7 @@ gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = '',
-    condition = has_file_type,
+    --condition = has_file_type,
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.fg,colors.purple}
   }
@@ -323,7 +323,7 @@ gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
     separator = '',
-    condition = has_file_type,
+    --condition = has_file_type,
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.fg,colors.purple}
   }

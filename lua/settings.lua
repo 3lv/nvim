@@ -1,4 +1,3 @@
-
 --Options
 
 vim.o.clipboard = "unnamedplus"
@@ -43,7 +42,6 @@ augroups(
 			{'FileType', 'cpp', [[nnoremap <silent> <C-c> <cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
 			{'FileType', 'cpp', [[nnoremap <silent> <F9> <cmd>wa <bar> make %:r <bar> !./%:r < %:r.in > %:r.out<CR>]]},
 			{'FileType', 'cpp', [[nnoremap <silent> <F21> <cmd>wa <bar> make %:r <bar> !./%:r<CR>]]},
-
 		},
     }
 )

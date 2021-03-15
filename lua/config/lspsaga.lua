@@ -1,5 +1,6 @@
 require'lspsaga'.init_lsp_saga {
 	
+
 -- add your config value here
 -- default value
 -- use_saga_diagnostic_sign = true
@@ -36,5 +37,6 @@ require'lspsaga'.init_lsp_saga {
 -- the related filetypes into this table
 -- like server_filetype_map = {metals = {'sbt', 'scala'}}
 -- server_filetype_map = {}
+
 
 }
