@@ -11,20 +11,22 @@ end
 return require('packer').startup{function()
 
 	-- Packer manages itself VV
-	use {'wbthomason/packer.nvim', opt = true}
+	use {'wbthomason/packer.nvim'}
 
 
 	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
 
 	-- Tree explorer
-	use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+	-- for nvim-tree you can't change directory..
+	--use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+	use {'preservim/nerdtree', requires = {"kyazdani42/nvim-web-devicons"}, config = function() require'config.nerdtree' end}
 	-- Terminal toggle
 	use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
 	
 	-- LSP
 	use {'neovim/nvim-lspconfig'}
 	use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
-	use {'hrsh7th/vim-vsnip'}
+	use {'glepnir/lspsaga.nvim', config = function() require'config.lspsaga' end}
 
 	-- Colors
 	use {'nvim-treesitter/nvim-treesitter', config = function() require'config.nvim-treesitter' end}
@@ -39,6 +41,8 @@ return require('packer').startup{function()
 		-- some optional icons
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
+
+	use {'mhinz/vim-startify', config = function() require'config.vim-startify' end}
 
 	--[[
 	use {

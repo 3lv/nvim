@@ -38,9 +38,11 @@ augroups(
         },
 		_cpp_mappings =
 		{
-			{'FileType', 'cpp', 'nnoremap <silent> <F2> <Cmd>bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
-			{'FileType', 'cpp', 'nnoremap <silent> <F3> <Cmd>bel sp %:r.out <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
-			{'FileType', 'cpp', [[nnoremap <silent> <C-c> <Cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
+			{'FileType', 'cpp', 'nnoremap <silent> <F2> <cmd>bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', 'nnoremap <silent> <F3> <cmd>bel sp %:r.out <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', [[nnoremap <silent> <C-c> <cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
+			{'FileType', 'cpp', [[nnoremap <silent> <F9> <cmd>wa <bar> make %:r <bar> !./%:r < %:r.in > %:r.out<CR>]]},
+			{'FileType', 'cpp', [[nnoremap <silent> <F21> <cmd>wa <bar> make %:r <bar> !./%:r<CR>]]},
 
 		},
     }

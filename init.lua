@@ -1,16 +1,7 @@
--- Colorscheme
 require('colorscheme')
-
--- Install plugins
 require('plugins')
-
--- 'set/let' options
-require('options')
-
--- Keymappings
+require('settings')
 require('keymappings')
-
--- lsp keymappings ++
 require('lsp.cpp')
--- Configure plugins the plugin manager should do that
--- require('config')
+-- Configure plugins: the plugin manager should do that
+-- require('config'): loads all plugins + configs (not lazy)
