@@ -17,10 +17,11 @@ return require('packer').startup{function()
 	--use {'unblevable/quick-scope', config = function() require'config.quick-scope' end}
 
 
+	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
+
+	use {'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require'config.barbar' end}
 	use {'TimUntersberger/neogit', config = function() require'config.neogit' end}
 
-
-	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
 
 	-- Tree explorer
 	-- for nvim-tree you can't change directory..
