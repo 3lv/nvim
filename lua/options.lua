@@ -1,6 +1,4 @@
 
--- Colorscheme
-require('colorscheme')
 --Options
 
 vim.o.clipboard = "unnamedplus"
@@ -30,11 +28,20 @@ vim.wo.relativenumber = true
 
 --Autocmd
 
-local augroup = require('utils.augroup')
+local augroups = require('utils.augroups')
 
-augroup(
-    {_general_settings = {
-            {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'IncSearch\', timeout = 1000})'},
+augroups(
+    {
+		_general_settings =
+		{
+			{'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'IncSearch\', timeout = 200})'},
         },
+		_cpp_settings =
+		{
+			{'FileType', 'cpp', 'nnoremap <silent> <F2> :bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', 'nnoremap <silent> <F3> :bel sp %:r.out <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
+			{'FileType', 'cpp', [[nnoremap <cilent> <C-c> <Cmd>s@^\(\s*\)@\1//@e<CR> <Cmd>s@^\(\s*\)////@\1@e]]},
+
+		},
     }
 )

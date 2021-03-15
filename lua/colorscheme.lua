@@ -1,6 +1,10 @@
 vim.o.background = "dark" -- or "light" for light mode
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "🞮", numhl = "LspDiagnosticsDefaultError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "▲", numhl = "LspDiagnosticsDefaultWarning" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "⁈", numhl = "LspDiagnosticsDefaultInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "⯁", numhl = "LspDiagnosticsDefaultHint" })
 vim.cmd([[colorscheme gruvbox]])
+local error = "LspDiagnosticsDefaultError"
+local warning = "LspDiagnosticsDefaultWarning"
+local information = "LspDiagnosticsDefaultInformation"
+local hint = "LspDiagnosticsDefaultHint"
+vim.fn.sign_define("LspDiagnosticsSignError", { text = "🞮", texthl = error, numhl = error, linehl = "", numhl = ""})
+vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "▲", texthl = warnig, numhl = warning})
+vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "⁈", texthl = information, numhl = information})
+vim.fn.sign_define("LspDiagnosticsSignHint", { text = "⯁", texthl = hist, numhl = hint})
