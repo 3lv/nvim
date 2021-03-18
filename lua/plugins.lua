@@ -10,10 +10,6 @@ end
 
 return require('packer').startup{function()
 
-	-- Packer manages itself VV
-	use {'wbthomason/packer.nvim'}
-
-	--REALLY NEED A NVIM LUA QUICK-SCOPE
 	--use {'unblevable/quick-scope', config = function() require'config.quick-scope' end}
 
 
@@ -28,15 +24,15 @@ return require('packer').startup{function()
 	--use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	use {'preservim/nerdtree', requires = {"kyazdani42/nvim-web-devicons"}, config = function() require'config.nerdtree' end}
 	-- Terminal toggle
-	use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
+	--use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
 	
 	-- LSP
 	use {'neovim/nvim-lspconfig'}
-	use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
+	--use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
 	use {'glepnir/lspsaga.nvim', config = function() require'config.lspsaga' end}
 
 	-- Colors
-	use {'nvim-treesitter/nvim-treesitter', config = function() require'config.nvim-treesitter' end}
+	--use {'nvim-treesitter/nvim-treesitter', config = function() require'config.nvim-treesitter' end}
 	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
 	-- Status line
@@ -62,5 +58,4 @@ return require('packer').startup{function()
 	  end
 	}
 	--]]
-
 end}
