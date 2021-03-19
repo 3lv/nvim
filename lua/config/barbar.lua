@@ -1,6 +1,7 @@
 local map = require'utils.map'
 local opts = { noremap=true, silent=true }
 --Move to previous/next
+
 map('n', '<A-,>', [[:BufferPrevious<CR>]], opts)
 map('n', '<A-.>', [[:BufferNext<CR>]], opts)
 --Re-order to previous/next
