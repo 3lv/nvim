@@ -26,3 +26,6 @@ map('t', '<Esc>', [[<C-\><C-n>]], opts)
 map('n', 'gh', [[<cmd> lua require'lspsaga.provider'.lsp_finder()<CR>]])
 map('n', '[e', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]])
 map('n', ']e', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]])
+
+map('n', [[<space>]], [[<cmd>HopChar2<CR>]])
+--map('n', [[/]], [[<cmd>HopPattern<CR>]])

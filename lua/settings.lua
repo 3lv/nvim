@@ -3,6 +3,7 @@
 vim.o.clipboard = "unnamedplus"
 vim.o.path = vim.o.path.."**"
 
+vim.cmd[[set undofile]] -- bug?
 vim.bo.undofile = true
 vim.o.switchbuf = "useopen"
 

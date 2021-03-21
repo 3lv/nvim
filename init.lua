@@ -1,4 +1,5 @@
 require('plugins')
+require('config.colorizer')
 require('keymappings')
 require('colorscheme')
 require('settings')
