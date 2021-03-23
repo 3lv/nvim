@@ -12,15 +12,30 @@ return require('packer').startup{function()
 
 	--use {'unblevable/quick-scope', config = function() require'config.quick-scope' end}
 	
-	use {'rktjmp/lush.nvim', }
-	use {'norcalli/nvim-colorizer.lua', config = function() require'config.colorizer' end}
-	use {'andweeb/presence.nvim', config = function() require'config.presence' end}
-	use {'mfussenegger/nvim-dap'}
-	use {'phaazon/hop.nvim', config = function() require'config.hop' end}
 
-	
-	use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = function()require'config.telescope' end}
+	--WorkFlow helpers(not colors/)
 
+	-- Tree explorer
+	--[[
+	use {
+		'preservim/nerdtree',
+		requires = {
+			{"kyazdani42/nvim-web-devicons"},
+		},
+		config = function() require'config.nerdtree' end
+	}
+    --]]
+	-- Fzf with file preview and more
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = {
+			{'nvim-lua/popup.nvim'},
+			{'nvim-lua/plenary.nvim'},
+		},
+		config = function() require'config.telescope' end
+	}
+
+	-- Betters highlighting, new text objects
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		requires = {
@@ -30,17 +45,27 @@ return require('packer').startup{function()
 		},
 		config = function() require'config.nvim-treesitter' end
 	}
+	
+	-- Git integration
+	use {'TimUntersberger/neogit', config = function() require'config.neogit' end}
 
+	--
+	-----------------------------
+	--
+
+	use {'rktjmp/lush.nvim', }
+	use {'norcalli/nvim-colorizer.lua', config = function() require'config.colorizer' end}
+	use {'andweeb/presence.nvim', config = function() require'config.presence' end}
+	use {'mfussenegger/nvim-dap'}
+	use {'phaazon/hop.nvim', config = function() require'config.hop' end}
 	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
 
 	use {'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require'config.barbar' end}
-	use {'TimUntersberger/neogit', config = function() require'config.neogit' end}
 
 
 	-- Tree explorer
 	-- for nvim-tree you can't change directory..
-	--use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
-	use {'preservim/nerdtree', requires = {"kyazdani42/nvim-web-devicons"}, config = function() require'config.nerdtree' end}
+	use {'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end, requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	-- Terminal toggle
 	-- use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
 	

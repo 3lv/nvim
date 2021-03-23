@@ -1,5 +1,3 @@
-local cmd = vim.cmd
-
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_follow = 1
@@ -26,4 +24,4 @@ vim.g.nvim_tree_icons = {
         symlink = "",
         }
       }
-cmd [[command! E  NvimTreeToggle]]
+vim.cmd[[command! E NvimTreeToggle]]

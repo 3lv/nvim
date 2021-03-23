@@ -1,5 +1,6 @@
 --Options
 
+vim.o.hidden = true
 vim.o.clipboard = "unnamedplus"
 vim.o.path = vim.o.path.."**"
 
@@ -7,13 +8,15 @@ vim.cmd[[set undofile]] -- bug?
 vim.bo.undofile = true
 vim.o.switchbuf = "useopen"
 
-
 vim.o.termguicolors = true
 vim.o.guicursor = ""
 vim.o.inccommand = "split"
 
 vim.o.completeopt = "menuone,noselect"
-vim.bo.suffixesadd = ".cpp,.lua"
+
+vim.bo.suffixesadd = ".lua"
+vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
+
 
 -- Indent options
 vim.o.tabstop=4
@@ -35,7 +38,7 @@ augroups(
 		_general_settings =
 		{
 			{'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'IncSearch\', timeout = 200})'},
-        },
+		},
 		_cpp_mappings =
 		{
 			{'FileType', 'cpp', 'nnoremap <silent> <F2> <cmd>bo 40vs %:r.in <bar> setlocal nu nornu <bar> set wfw wfh<CR>'},
@@ -43,6 +46,10 @@ augroups(
 			{'FileType', 'cpp', [[nnoremap <silent> <C-c> <cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
 			{'FileType', 'cpp', [[nnoremap <silent> <F9> <cmd>wa <bar> make %:r <bar> !./%:r < %:r.in > %:r.out<CR>]]},
 			{'FileType', 'cpp', [[nnoremap <silent> <F21> <cmd>wa <bar> make %:r <bar> !./%:r<CR>]]},
+		},
+		_neotree =
+		{
+			{'BufEnter', 'NvimTree', 'setlocal winhighlight=CursorLine:CursorLineNvimTree'}
 		},
     }
 )
