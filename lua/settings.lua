@@ -1,5 +1,7 @@
 --Options
 
+vim.o.fillchars = [[stl:-,stlnc:-,eob: ]]
+
 vim.o.hidden = true
 vim.o.clipboard = "unnamedplus"
 vim.o.path = vim.o.path.."**"
@@ -16,6 +18,7 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.bo.suffixesadd = ".lua"
 vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
+--vim.cmd[[set fillchars=stl:-,stlnc:-,eob:\ ]]
 
 
 -- Indent options

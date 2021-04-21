@@ -1,5 +1,5 @@
-require('plugins')
+require('min-plugins')
+require('colorscheme')
 require('settings')
 require('keymappings')
-require('colorscheme')
 require('lsp')
