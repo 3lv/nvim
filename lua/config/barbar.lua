@@ -1,3 +1,5 @@
+vim.cmd[[let bufferline = get(g:, 'bufferline', {})]]
+vim.cmd[[let bufferline.closable = v:false]]
 local map = require'utils.map'
 local opts = { noremap=true, silent=true }
 --Move to previous/next

@@ -1,6 +1,6 @@
 --Options
 
-vim.o.fillchars = [[stl:-,stlnc:-,eob: ]]
+vim.o.fillchars = [[stl: ,stlnc: ,eob: ]]
 
 vim.o.hidden = true
 vim.o.clipboard = "unnamedplus"

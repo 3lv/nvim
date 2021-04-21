@@ -3,6 +3,7 @@ local gls = gl.section
 local extension = require('galaxyline.provider_extensions')
 
 gl.short_line_list = {
+	'NvimTree',
     'LuaTree',
     'vista',
     'dbui',
@@ -17,8 +18,10 @@ gl.short_line_list = {
 -- VistaPlugin = extension.vista_nearest
 
 local colors = {
-    bg = '#282c34',
-    line_bg = '#353644',
+    --bg = '#282c34',
+    --line_bg = '#353644',
+	bg = 'none',
+	line_bg = 'none',
     fg = '#8FBCBB',
     fg_green = '#65a380',
 
@@ -45,6 +48,7 @@ local function lsp_status(status)
 end
 
 
+--[[
 local function get_coc_lsp()
   local status = vim.fn['coc#status']()
   if not status or status == '' then
@@ -72,16 +76,29 @@ function get_function_info()
     end
   return ''
 end
+--]]
+
+local function name_spacing1()
+	local space = '      '
+	return space
+end
+
+local function name_spacing2()
+	local space = '    '
+	return space
+end
 
 local function trailing_whitespace()
     local trail = vim.fn.search("\\s$", "nw")
     if trail ~= 0 then
-        return ' '
+        return trail
     else
         return nil
     end
 end
 
+NameSpacing1 = name_spacing1
+NameSpacing2 = name_spacing2
 CocStatus = get_diagnostic_info
 CocFunc = get_current_func
 TrailingWhiteSpace = trailing_whitespace
@@ -101,14 +118,17 @@ local buffer_not_empty = function()
   return false
 end
 
+
 gls.left[1] = {
   FirstElement = {
     provider = function() return ' ' end,
-    highlight = {colors.blue,colors.line_bg}
-  },
+    --highlight = {colors.orange,colors.line_bg},
+  }
 }
-gls.left[2] = {
+
+gls.mid[1] = {
   ViMode = {
+    separator = '▎',
     provider = function()
       -- auto change color according the vim mode
       local alias = {
@@ -153,33 +173,21 @@ gls.left[2] = {
 }
 gls.left[3] ={
   FileIcon = {
-    provider = 'FileIcon',
+    --provider = {'NameSpacing1','FileIcon'},
+    provider = {'FileIcon'},
     condition = buffer_not_empty,
     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
   },
 }
 gls.left[4] = {
   FileName = {
-    provider = {'FileName','FileSize'},
+    --provider = {'FileName','NameSpacing2'},
+    provider = {'FileName'},
     condition = buffer_not_empty,
     highlight = {colors.fg,colors.line_bg,'bold'}
   }
 }
 
-gls.left[5] = {
-  GitIcon = {
-    provider = function() return '  ' end,
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {colors.orange,colors.line_bg},
-  }
-}
-gls.left[6] = {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {'#8FBCBB',colors.line_bg,'bold'},
-  }
-}
 
 local checkwidth = function()
   local squeeze_width  = vim.fn.winwidth(0) / 2
@@ -205,6 +213,7 @@ gls.left[8] = {
     highlight = {colors.orange,colors.line_bg},
   }
 }
+
 gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',
@@ -213,11 +222,12 @@ gls.left[9] = {
     highlight = {colors.red,colors.line_bg},
   }
 }
+
 gls.left[10] = {
   LeftEnd = {
-    provider = function() return '' end,
-    separator = '',
-    separator_highlight = {colors.bg,colors.line_bg},
+    provider = function() return ' ' end,
+    --separator = '',
+    --separator_highlight = {colors.bg,colors.line_bg},
     highlight = {colors.line_bg,colors.line_bg}
   }
 }
@@ -251,6 +261,7 @@ gls.left[14] = {
 }
 
 
+--[[
 gls.left[15] = {
     CocStatus = {
      provider = CocStatus,
@@ -266,11 +277,12 @@ gls.left[16] = {
     highlight = {colors.yellow,colors.bg},
   }
 }
+--]]
 
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
-    separator = ' ',
+    separator = '▎ ',
     separator_highlight = {colors.bg,colors.line_bg},
     highlight = {colors.fg,colors.line_bg,'bold'},
   }
@@ -309,6 +321,37 @@ gls.right[5] = {
 -- }
 
 gls.short_line_left[1] = {
+  FirstElementNonActive = {
+    provider = function() return ' ' end,
+    --highlight = {colors.orange,colors.line_bg},
+  }
+}
+
+gls.short_line_left[2] = {
+  FileIconNonActive = {
+    provider = 'FileIcon',
+    condition = buffer_not_empty,
+    --highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+    highlight = {colors.bg,colors.line_bg},
+  },
+}
+
+gls.short_line_left[3] = {
+  FileNameNonActive = {
+    provider = {'FileName'},
+    condition = buffer_not_empty,
+    highlight = {colors.fg,colors.line_bg}
+  }
+}
+
+gls.short_line_left[4] = {
+  LeftEndNonActive = {
+    provider = function() return ' ' end,
+    highlight = {colors.line_bg,colors.line_bg}
+  }
+}
+--[[
+gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = '',
@@ -328,3 +371,4 @@ gls.short_line_right[1] = {
     highlight = {colors.fg,colors.purple}
   }
 }
+--]]
