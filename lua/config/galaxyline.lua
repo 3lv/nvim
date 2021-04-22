@@ -4,15 +4,7 @@ local extension = require('galaxyline.provider_extensions')
 
 gl.short_line_list = {
 	'NvimTree',
-    'LuaTree',
-    'vista',
-    'dbui',
-    'startify',
-    'term',
-    'nerdtree',
-    'fugitive',
-    'fugitiveblame',
-    'plug'
+    'packer'
 }
 
 -- VistaPlugin = extension.vista_nearest
@@ -36,6 +28,21 @@ local colors = {
     red = '#ec5f67'
 }
 
+local function current_line_percent()
+  local current_line = vim.fn.line('.')
+  local total_line = vim.fn.line('$')
+  if current_line == 1 then
+    return '  上 '
+  elseif current_line == vim.fn.line('$') then
+    return '  下 '
+  end
+  local result,_ = math.modf((current_line/total_line)*100)
+  if result <= 9 then
+    return ' ' .. ' ' .. result .. '% '
+  end
+  return ' '.. result .. '% '
+end
+
 local function lsp_status(status)
     shorter_stat = ''
     for match in string.gmatch(status, "[^%s]+")  do
@@ -47,47 +54,6 @@ local function lsp_status(status)
     return shorter_stat
 end
 
-
---[[
-local function get_coc_lsp()
-  local status = vim.fn['coc#status']()
-  if not status or status == '' then
-      return ''
-  end
-  return lsp_status(status)
-end
-
-function get_diagnostic_info()
-  if vim.fn.exists('*coc#rpc#start_server') == 1 then
-    return get_coc_lsp()
-    end
-  return ''
-end
-
-local function get_current_func()
-  local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
-  if not has_func then return end
-      return func_name
-  end
-
-function get_function_info()
-  if vim.fn.exists('*coc#rpc#start_server') == 1 then
-    return get_current_func()
-    end
-  return ''
-end
---]]
-
-local function name_spacing1()
-	local space = '      '
-	return space
-end
-
-local function name_spacing2()
-	local space = '    '
-	return space
-end
-
 local function trailing_whitespace()
     local trail = vim.fn.search("\\s$", "nw")
     if trail ~= 0 then
@@ -97,6 +63,7 @@ local function trailing_whitespace()
     end
 end
 
+LinePercent = current_line_percent
 NameSpacing1 = name_spacing1
 NameSpacing2 = name_spacing2
 CocStatus = get_diagnostic_info
@@ -126,52 +93,8 @@ gls.left[1] = {
   }
 }
 
-gls.mid[1] = {
-  ViMode = {
-    separator = '▎',
-    provider = function()
-      -- auto change color according the vim mode
-      local alias = {
-          n = 'NORMAL',
-          i = 'INSERT',
-          c= 'COMMAND',
-          V= 'VISUAL',
-          [''] = 'VISUAL',
-          v ='VISUAL',
-          c  = 'COMMAND-LINE',
-          ['r?'] = ':CONFIRM',
-          rm = '--MORE',
-          R  = 'REPLACE',
-          Rv = 'VIRTUAL',
-          s  = 'SELECT',
-          S  = 'SELECT',
-          ['r']  = 'HIT-ENTER',
-          [''] = 'SELECT',
-          t  = 'TERMINAL',
-          ['!']  = 'SHELL',
-      }
-      local mode_color = {
-          n = colors.green,
-          i = colors.blue,v=colors.magenta,[''] = colors.blue,V=colors.blue,
-          c = colors.red,no = colors.magenta,s = colors.orange,S=colors.orange,
-          [''] = colors.orange,ic = colors.yellow,R = colors.purple,Rv = colors.purple,
-          cv = colors.red,ce=colors.red, r = colors.cyan,rm = colors.cyan, ['r?'] = colors.cyan,
-          ['!']  = colors.green,t = colors.green,
-          c  = colors.purple,
-          ['r?'] = colors.red,
-          ['r']  = colors.red,
-          rm = colors.red,
-          R  = colors.yellow,
-          Rv = colors.magenta,
-      }
-      local vim_mode = vim.fn.mode()
-      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
-      return alias[vim_mode] .. '   '
-    end,
-    highlight = {colors.red,colors.line_bg,'bold'},
-  },
-}
-gls.left[3] ={
+
+gls.left[2] ={
   FileIcon = {
     --provider = {'NameSpacing1','FileIcon'},
     provider = {'FileIcon'},
@@ -179,7 +102,7 @@ gls.left[3] ={
     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
   },
 }
-gls.left[4] = {
+gls.left[3] = {
   FileName = {
     --provider = {'FileName','NameSpacing2'},
     provider = {'FileName'},
@@ -197,7 +120,7 @@ local checkwidth = function()
   return false
 end
 
-gls.left[7] = {
+gls.left[4] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
@@ -205,7 +128,7 @@ gls.left[7] = {
     highlight = {colors.green,colors.line_bg},
   }
 }
-gls.left[8] = {
+gls.left[5] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
@@ -214,7 +137,7 @@ gls.left[8] = {
   }
 }
 
-gls.left[9] = {
+gls.left[6] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
@@ -223,7 +146,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.left[7] = {
   LeftEnd = {
     provider = function() return ' ' end,
     --separator = '',
@@ -232,7 +155,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.left[8] = {
     TrailingWhiteSpace = {
      provider = TrailingWhiteSpace,
      icon = '  ',
@@ -240,19 +163,19 @@ gls.left[11] = {
     }
 }
 
-gls.left[12] = {
+gls.left[9] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red,colors.bg}
-  }
 }
-gls.left[13] = {
+}
+gls.left[10] = {
   Space = {
     provider = function () return ' ' end
   }
 }
-gls.left[14] = {
+gls.left[11] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -260,65 +183,60 @@ gls.left[14] = {
   }
 }
 
-
---[[
-gls.left[15] = {
-    CocStatus = {
-     provider = CocStatus,
-     highlight = {colors.green,colors.bg},
-     icon = '  🗱'
-    }
-}
-
-gls.left[16] = {
-  CocFunc = {
-    provider = CocFunc,
-    icon = '  λ ',
-    highlight = {colors.yellow,colors.bg},
-  }
-}
---]]
-
-gls.right[1]= {
-  FileFormat = {
-    provider = 'FileFormat',
-    separator = '▎ ',
-    separator_highlight = {colors.bg,colors.line_bg},
-    highlight = {colors.fg,colors.line_bg,'bold'},
-  }
-}
-gls.right[4] = {
-  LineInfo = {
-    provider = 'LineColumn',
-    separator = ' | ',
-    separator_highlight = {colors.blue,colors.line_bg},
-    highlight = {colors.fg,colors.line_bg},
+gls.mid[1] = {
+  ViMode = {
+    separator = '▎',
+    provider = function()
+      -- auto change color according the vim mode
+      local alias = {
+          n = 'ノーマル  ', --normal
+          i = 'インサート', --insert
+          V= 'ビジュアル', --visual line
+          [''] = 'ビジュアル', --visual block
+          v ='ビジュアル', --visual
+          c  = 'コマンド  ', --command line
+          ['r?'] = ':CONFIRM', -- :CONFIRM
+          rm = '--MORE', -- --MORE
+          R  = '代わる    ', --replace
+          Rv = 'VIRTUAL', --virtual??
+          s  = 'セレクト  ', --select
+          S  = 'セレクト  ', --select line
+          ['r']  = 'HIT-ENTER', -- HIT-ENTER
+          [''] = 'SELECT', --select block
+          t  = 'ターミナル', -- terminal
+          ['!']  = 'SHELL', -- shell
+      }
+      local mode_color = {
+          n = colors.green,
+          i = colors.blue,v=colors.magenta,[''] = colors.blue,V=colors.blue,
+          c = colors.red,no = colors.magenta,s = colors.orange,S=colors.orange,
+          [''] = colors.orange,ic = colors.yellow,R = colors.purple,Rv = colors.purple,
+          cv = colors.red,ce=colors.red, r = colors.cyan,rm = colors.cyan, ['r?'] = colors.cyan,
+          ['!']  = colors.green,t = colors.green,
+          c  = colors.purple,
+          ['r?'] = colors.red,
+          ['r']  = colors.red,
+          rm = colors.red,
+          R  = colors.yellow,
+          Rv = colors.magenta,
+      }
+      local vim_mode = vim.fn.mode()
+      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
+      --return alias[vim_mode] .. '   '
+      return alias[vim_mode]
+    end,
+    highlight = {colors.red,colors.line_bg,'bold'},
   },
 }
-gls.right[5] = {
+
+gls.right[1] = {
   PerCent = {
-    provider = 'LinePercent',
+    provider = LinePercent,
     separator = ' ',
     separator_highlight = {colors.line_bg,colors.line_bg},
-    highlight = {colors.cyan,colors.darkblue,'bold'},
+    --highlight = {colors.cyan,colors.darkblue,'bold'},
   }
 }
-
--- gls.right[4] = {
---   ScrollBar = {
---     provider = 'ScrollBar',
---     highlight = {colors.blue,colors.purple},
---   }
--- }
---
--- gls.right[3] = {
---   Vista = {
---     provider = VistaPlugin,
---     separator = ' ',
---     separator_highlight = {colors.bg,colors.line_bg},
---     highlight = {colors.fg,colors.line_bg,'bold'},
---   }
--- }
 
 gls.short_line_left[1] = {
   FirstElementNonActive = {
@@ -343,32 +261,3 @@ gls.short_line_left[3] = {
     highlight = {colors.fg,colors.line_bg}
   }
 }
-
-gls.short_line_left[4] = {
-  LeftEndNonActive = {
-    provider = function() return ' ' end,
-    highlight = {colors.line_bg,colors.line_bg}
-  }
-}
---[[
-gls.short_line_left[1] = {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = '',
-    --condition = has_file_type,
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
-  }
-}
-
-
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    separator = '',
-    --condition = has_file_type,
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
-  }
-}
---]]

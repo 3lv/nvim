@@ -61,7 +61,6 @@ return require('packer').startup{function()
 	--use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
 	--Status line
-	--[[
 	use {
 	  'glepnir/galaxyline.nvim',
 		branch = 'main',
@@ -70,7 +69,6 @@ return require('packer').startup{function()
 		-- some optional icons
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
-	--]]
 
 	-- 'Tab' line
 	use {
