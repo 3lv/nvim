@@ -1,4 +1,4 @@
-require('min-plugins')
+require('plugins')
 require('colorscheme')
 require('settings')
 require('keymappings')

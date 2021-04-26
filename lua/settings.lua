@@ -1,5 +1,7 @@
 --Options
 
+vim.o.shortmess = [[filnxtToOFI]]
+vim.o.stl = [[%<]]
 vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.fillchars = [[stl: ,stlnc: ,eob: ]]

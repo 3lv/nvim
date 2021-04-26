@@ -3,8 +3,6 @@ local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-local install_path = '/home/fem/.local/share/nvim/site/pack/packer/start/packer.nvim'
-
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
   execute 'packadd packer.nvim'
@@ -12,12 +10,19 @@ end
 
 return require('packer').startup{function()
 
-
 	use {'wbthomason/packer.nvim'}
 	-- Adds devicons 
 	use {'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end}
+	use {'rktjmp/lush.nvim'}
+
 
 --WorkFlow helpers(not colors/)
+
+    -- Starting screen
+	use {
+		'mhinz/vim-startify',
+		config = function() require'config.vim-startify' end
+	}
 
 	---[[ Tree explorer
 	use {
@@ -40,27 +45,34 @@ return require('packer').startup{function()
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		requires = {
-			--{'p00f/nvim-ts-rainbow'},
-			--{'nvim-treesitter/playground'},
-			--{'nvim-treesitter/nvim-treesitter-textobjects'},
+			{'p00f/nvim-ts-rainbow'},
+			{'nvim-treesitter/playground'},
+			{'nvim-treesitter/nvim-treesitter-textobjects'},
 		},
 		config = function() require'config.nvim-treesitter' end
 	}
 	
+	-- Git integration
+	use {'TimUntersberger/neogit', config = function() require'config.neogit' end}
+
 	-- LSP
 	use {'neovim/nvim-lspconfig'}
-	--use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
+	use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
 	use {'glepnir/lspsaga.nvim', config = function() require'config.lspsaga' end}
+
+
+
+
 
 
 -- Visual changes
 
 
 	-- Colors
-	use {"3lv/femboyscheme", requires = {"rktjmp/lush.nvim"}}
-	--use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+	use {"3lv/femboyscheme", require = {"rktjmp/lush.nvim"}}
+	--use {"npxbr/gruvbox.nvim", require = {"rktjmp/lush.nvim"}}
 
-	--Status line
+	-- Status line
 	use {
 	  'glepnir/galaxyline.nvim',
 		branch = 'main',
@@ -76,6 +88,49 @@ return require('packer').startup{function()
 		requires = 'kyazdani42/nvim-web-devicons',
 		config = function() require'config.barbar' end
 	}
-	--use {'norcalli/nvim-colorizer.lua', config = function() require'config.colorizer' end}
+	use {'norcalli/nvim-colorizer.lua', config = function() require'config.colorizer' end}
 
+
+
+	
+
+-- WorkFlow changers(break compatibility with vanilla nvim, adds keymapppinds...)
+
+	use {
+		'phaazon/hop.nvim',
+		config = function() require'config.hop' end
+	}
+
+
+
+
+	
 end}
+
+-- Unused
+	--use {'andweeb/presence.nvim', config = function() require'config.presence' end}
+	--use {'mfussenegger/nvim-dap'}
+	-- use {'akinsho/nvim-toggleterm.lua', config = function() require'config.nvim-toggleterm' end}
+	--[[
+	use {
+		'preservim/nerdtree',
+		requires = {
+			{"kyazdani42/nvim-web-devicons"},
+		},
+		config = function() require'config.nerdtree' end
+	}
+    --]]
+	--[[
+	use {
+	  'lewis6991/gitsigns.nvim',
+	  requires = {
+		'nvim-lua/plenary.nvim'
+	  },
+	  config = function()
+		require('config.gitsigns').setup()
+	  end
+	}
+	--]]
+	
+
+
