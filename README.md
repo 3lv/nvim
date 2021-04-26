@@ -1,10 +1,11 @@
 Prerequires:
-	* nvim 0.5+
-	* (optional) LSP: ccls
+* nvim 0.5+
+* (optional)ccls
 
-### For backup
-> backup ~/.config/nvim if you have any:
-> mv ~/.config/nvim ~/.config/nvim-backup
+### Backup old config
+```bash
+mv ~/.config/nvim ~/.config/nvim-backup
+```
 
 ## Install config
 ```bash
