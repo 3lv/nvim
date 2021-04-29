@@ -2,12 +2,18 @@ local gl = require('galaxyline')
 local gls = gl.section
 local extension = require('galaxyline.provider_extensions')
 
+local noicon = {}
+noicon['NvimTree'] = true
+noicon['packer'] = true
+
+local special_name = {}
+special_name['NvimTree'] = 'NvimTree פּ'
+special_name['packer'] = 'Packer '
+
 gl.short_line_list = {
 	'NvimTree',
 	'packer'
 }
-
--- VistaPlugin = extension.vista_nearest
 
 local colors = {
 	--bg = '#282c34',
@@ -30,8 +36,9 @@ local colors = {
 
 local function get_current_file_name()
 	local file = vim.fn.expand('%:t')
-	if vim.fn.empty(file) == 1 then return '[buffer ' .. vim.fn.bufnr('%') .. '][No Name]' end
-	if string.sub(file, 1, 4) == "tmp." then return '[Temp file]' end
+	if vim.fn.empty(file) == 1 then return  '[No Name][buffer ' .. vim.fn.bufnr('%') .. ']'end
+	if string.sub(file, 1, 4) == 'tmp.' then return '[Temp file]' end
+	if special_name[vim.bo.filetype] ~= nil then return special_name[vim.bo.filetype] end
 	if vim.bo.filetype == 'help' then return file .. ' ' end
 	if vim.bo.modifiable and vim.bo.modified and vim.bo.readonly then
 		file = file .. ' ' .. ''
@@ -86,7 +93,7 @@ NameSpacing1 = name_spacing1
 NameSpacing2 = name_spacing2
 TrailingWhiteSpace = trailing_whitespace
 
-function has_file_type()
+local function has_file_type()
 	local f_type = vim.bo.filetype
 	if not f_type or f_type == '' then
 		return false
@@ -101,6 +108,16 @@ local buffer_not_empty = function()
   return false
 end
 
+local needs_icon = function()
+	if not buffer_not_empty then
+		return false
+	end
+	if noicon[vim.bo.filetype] ~= nil or noicon[vim.fn.expand('%:e')] ~= nil then
+		return false
+	end
+	return true
+end
+
 
 gls.left[1] = {
   FirstElement = {
@@ -108,13 +125,11 @@ gls.left[1] = {
 	--highlight = {colors.orange,colors.line_bg},
   }
 }
-
-
 gls.left[2] ={
   FileIcon = {
 	--provider = {'NameSpacing1','FileIcon'},
 	provider = {'FileIcon'},
-	--condition = buffer_not_empty,
+	condition = needs_icon,
 	highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
   },
 }
@@ -152,7 +167,6 @@ gls.left[5] = {
 	highlight = {colors.orange,colors.line_bg},
   }
 }
-
 gls.left[6] = {
   DiffRemove = {
 	provider = 'DiffRemove',
@@ -161,7 +175,6 @@ gls.left[6] = {
 	highlight = {colors.red,colors.line_bg},
   }
 }
-
 gls.left[7] = {
   LeftEnd = {
 	provider = function() return ' ' end,
@@ -170,7 +183,6 @@ gls.left[7] = {
 	highlight = {colors.line_bg,colors.line_bg}
   }
 }
-
 gls.left[8] = {
 	TrailingWhiteSpace = {
 	 provider = TrailingWhiteSpace,
@@ -178,7 +190,6 @@ gls.left[8] = {
 	 highlight = {colors.yellow,colors.bg},
 	}
 }
-
 gls.left[9] = {
   DiagnosticError = {
 	provider = 'DiagnosticError',
@@ -198,7 +209,6 @@ gls.left[11] = {
 	highlight = {colors.yellow,colors.bg},
   }
 }
-
 gls.mid[1] = {
   ViMode = {
 	separator = '▎',
@@ -213,8 +223,8 @@ gls.mid[1] = {
 		  c  = 'コマンド  ', --command line
 		  ['r?'] = ':CONFIRM', -- :CONFIRM
 		  rm = '--MORE', -- --MORE
-		  R  = '代わる	  ', --replace
-		  Rv = 'VIRTUAL', --virtual??
+		  R  = '代わる .  ', --replace
+		  Rv  = '代わる .  ', --replace
 		  s  = 'セレクト  ', --select
 		  S  = 'セレクト  ', --select line
 		  ['r']  = 'HIT-ENTER', -- HIT-ENTER
@@ -244,7 +254,6 @@ gls.mid[1] = {
 	highlight = {colors.red,colors.line_bg,'bold'},
   },
 }
-
 gls.right[1] = {
   PerCent = {
 	provider = LinePercent,
@@ -253,26 +262,23 @@ gls.right[1] = {
 	--highlight = {colors.cyan,colors.darkblue,'bold'},
   }
 }
-
 gls.short_line_left[1] = {
   FirstElementNonActive = {
 	provider = function() return ' ' end,
 	--highlight = {colors.orange,colors.line_bg},
   }
 }
-
 gls.short_line_left[2] = {
   FileIconNonActive = {
-	provider = 'FileIcon',
-	condition = buffer_not_empty,
+	provider = {'FileIcon'},
+	condition = needs_icon,
 	--highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
 	highlight = {colors.bg,colors.line_bg},
   },
 }
-
 gls.short_line_left[3] = {
   FileNameNonActive = {
-	provider = {'FileName'},
+	provider = {get_current_file_name},
 	condition = buffer_not_empty,
 	highlight = {colors.fg,colors.line_bg}
   }
