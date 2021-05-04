@@ -10,7 +10,7 @@ end
 return require('packer').startup{function()
 	use { 'wbthomason/packer.nvim' }
 	use { '3lv/femboyscheme', requires = {'rktjmp/lush.nvim'} }
-	use { '3lv/nvim-cpp' }
+	use { '3lv/femboycpp' }
 	use { 'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end }
 	use { 'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end }
 	use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }, config = function() require'config.telescope' end }

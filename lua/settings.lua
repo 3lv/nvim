@@ -49,10 +49,8 @@ augroups(
 		},
 		_cpp_mappings =
 		{
-			{'FileType', 'cpp', [[nnoremap <silent> <F4> <cmd>lua require('femboycpp').toggle_inout()<CR>]]},
-			--{'FileType', 'cpp', [[nnoremap <silent> <C-c> <cmd>s@^\(\s*\)@\1//@e <bar> s@^\(\s*\)////@\1@e<CR>]]},
-			{'FileType', 'cpp', [[nnoremap <silent> <F9> <cmd>lua require('femboycpp').build_and_run()<CR>]]},
-			{'FileType', 'cpp', [[nnoremap <silent> <F21> <cmd>wa <bar> make %:r <bar> !./%:r<CR><CR>]]},
+			{'FileType', 'cpp', [[nnoremap <silent> <A-4> <cmd>lua require('femboycpp').toggle_inout()<CR>]]},
+			{'FileType', 'cpp', [[nnoremap <silent> <A-9> <cmd>lua require('femboycpp').build_and_run()<CR>]]},
 		},
 		_NvimTree =
 		{
@@ -60,3 +58,4 @@ augroups(
 		},
 	}
 )
+
