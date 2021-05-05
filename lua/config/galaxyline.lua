@@ -79,19 +79,9 @@ local function lsp_status(status)
 	return shorter_stat
 end
 
-local function trailing_whitespace()
-	local trail = vim.fn.search("\\s$", "nw")
-	if trail ~= 0 then
-		return trail
-	else
-		return nil
-	end
-end
-
 LinePercent = current_line_percent
 NameSpacing1 = name_spacing1
 NameSpacing2 = name_spacing2
-TrailingWhiteSpace = trailing_whitespace
 
 local function has_file_type()
 	local f_type = vim.bo.filetype
@@ -182,13 +172,6 @@ gls.left[7] = {
 	--separator_highlight = {colors.bg,colors.line_bg},
 	highlight = {colors.line_bg,colors.line_bg}
   }
-}
-gls.left[8] = {
-	TrailingWhiteSpace = {
-	 provider = TrailingWhiteSpace,
-	 icon = '  ',
-	 highlight = {colors.yellow,colors.bg},
-	}
 }
 gls.left[9] = {
   DiagnosticError = {

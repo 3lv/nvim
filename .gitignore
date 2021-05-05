@@ -1,10 +1,6 @@
 #unused
 .config/
-
-#tmp files
-backup/
-undodir/
-tmp/
+.max-plugins
 
 #from plugins
 plugin/

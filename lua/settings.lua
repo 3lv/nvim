@@ -1,61 +1,45 @@
---Options
+vim.o.guicursor = ""
+-- Options
 
-vim.o.mouse = [[a]]
-vim.o.shortmess = [[filnxtToOFI]]
-vim.o.stl = [[%<]]
+-- Cleaner
 vim.o.showcmd = false
 vim.o.showmode = false
+vim.o.shortmess = [[filnxtToOFI]]
+vim.o.statusline = [[%<]]
 vim.o.fillchars = [[stl: ,stlnc: ,eob: ]]
 
+-- Basics
+vim.o.termguicolors = true
+vim.o.mouse = [[a]]
 vim.o.hidden = true
 vim.o.clipboard = "unnamedplus"
 vim.o.path = vim.o.path .. "**"
-
---vim.cmd[[set undofile]] -- bug?
-vim.bo.undofile = true
 vim.o.switchbuf = "useopen"
+vim.cmd[[set undofile]]
 
-vim.o.termguicolors = true
-vim.o.guicursor = ""
-vim.o.inccommand = "split"
-
-vim.o.completeopt = "menuone"
-
-vim.bo.suffixesadd = ".lua"
-vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
---vim.cmd[[set fillchars=stl:-,stlnc:-,eob:\ ]]
-
-
--- Indent options
-vim.bo.tabstop=4
-vim.bo.shiftwidth=0
-
-
-
---Window options
+-- Visual
+--vim.cmd[[set ts=4 sw=0]]
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.o.inccommand = "split"
+vim.o.completeopt = "menuone"
+
+-- For lua (find file under cursor)
+vim.bo.suffixesadd = ".lua"
+vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
 
 
 --Autocmd
-
 local augroups = require('utils.augroups')
 
-augroups(
+augroups( {
+	_general_settings =
 	{
-		_general_settings =
-		{
-			{'TextYankPost', '*', [[lua require('vim.highlight').on_yank({higroup = 'IncSearch', timeout = 200})]]},
-		},
-		_cpp_mappings =
-		{
-			{'FileType', 'cpp', [[nnoremap <silent> <A-4> <cmd>lua require('femboycpp').toggle_inout()<CR>]]},
-			{'FileType', 'cpp', [[nnoremap <silent> <A-9> <cmd>lua require('femboycpp').build_and_run()<CR>]]},
-		},
-		_NvimTree =
-		{
-			{'BufEnter', 'NvimTree', [[setlocal winhighlight=CursorLine:CursorLineNvimTree]]}
-		},
-	}
-)
-
+		{'TextYankPost', '*', [[lua require('vim.highlight').on_yank({higroup = 'IncSearch', timeout = 200})]]},
+	},
+	_cpp_mappings =
+	{
+		{'FileType', 'cpp', [[nnoremap <silent> <A-4> <cmd>lua require('femboycpp').toggle_inout()<CR>]]},
+		{'FileType', 'cpp', [[nnoremap <silent> <A-9> <cmd>lua require('femboycpp').build_and_run()<CR>]]},
+	},
+} )
