@@ -10,16 +10,17 @@ end
 return require('packer').startup{function()
 	use { 'wbthomason/packer.nvim' }
 	use { '3lv/femboyscheme', requires = {'rktjmp/lush.nvim'} }
-	use { '3lv/femboyalt', config = function() require'femboyalt' end }
+	use { '3lv/femboyalt',                   config = function() require('femboyalt') end }
 	use { '3lv/femboycpp' }
-	use { 'kyazdani42/nvim-web-devicons', config = function() require'config.nvim-web-devicons' end }
-	use { 'kyazdani42/nvim-tree.lua', config = function() require'config.nvim-tree' end }
-	use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }, config = function() require'config.telescope' end }
-	use { 'nvim-treesitter/nvim-treesitter', config = function() require'config.nvim-treesitter' end }
-	use { 'neovim/nvim-lspconfig' }
-	use { 'glepnir/lspsaga.nvim', config = function() require'config.lspsaga' end }
-	use { 'glepnir/galaxyline.nvim', branch = 'main', config = function() require'config.galaxyline' end }
-	use { 'romgrk/barbar.nvim', config = function() require'config.barbar' end }
-	--use {'hrsh7th/nvim-compe', config = function() require'config.compe' end}
-	--use {'norcalli/nvim-colorizer.lua', config = function() require'config.colorizer' end}
+	use { '3lv/femboyf',                     config = function() require('femboyf').setup() end }
+	use { 'kyazdani42/nvim-web-devicons',    config = function() require('config.nvim-web-devicons') end }
+	use { 'kyazdani42/nvim-tree.lua',        config = function() require('config.nvim-tree') end }
+	use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }, config = function() require('config.telescope') end }
+	use { 'nvim-treesitter/nvim-treesitter', config = function() require('config.nvim-treesitter') end }
+	use { 'neovim/nvim-lspconfig',           config = function() require('config.lsp') end }
+	use { 'glepnir/lspsaga.nvim',            config = function() require('config.lspsaga') end }
+	use { 'glepnir/galaxyline.nvim', branch = 'main', config = function() require('config.galaxyline') end }
+	use { 'romgrk/barbar.nvim',              config = function() require('config.barbar') end }
+	--use {'hrsh7th/nvim-compe', config = function() require('config.compe') end}
+	--use {'norcalli/nvim-colorizer.lua', config = function() require('config.colorizer') end}
 end}

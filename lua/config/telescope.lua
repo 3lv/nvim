@@ -50,5 +50,4 @@ require('telescope').setup{
 
 vim.cmd([[command! F lua require('telescope.builtin').find_files()]])
 vim.cmd([[command! R lua require('telescope.builtin').live_grep()]])
-vim.cmd([[command! B lua require('telescope.builtin').file_browser()]])
 vim.cmd([[command! A lua require('telescope.builtin').builtin()]])

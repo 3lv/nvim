@@ -1,4 +1,11 @@
-vim.o.guicursor = ""
+--[[
+--I ll live a better life without these
+vim.o.clipboard = "unnamedplus"
+vim.wo.number = true
+vim.wo.relativenumber = true
+]]
+
+vim.o.guicursor = ''
 -- Options
 
 -- Cleaner
@@ -6,28 +13,26 @@ vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.shortmess = [[filnxtToOFI]]
 vim.o.statusline = [[%<]]
-vim.o.fillchars = [[stl: ,stlnc: ,eob: ]]
+vim.o.fillchars = [[stl: ,stlnc: ]]
 
 -- Basics
 vim.o.termguicolors = true
 vim.o.mouse = [[a]]
 vim.o.hidden = true
-vim.o.clipboard = "unnamedplus"
-vim.o.path = vim.o.path .. "**"
+vim.o.path = vim.o.path .. '**'
 vim.o.switchbuf = "useopen"
 vim.cmd[[set undofile]]
 
 -- Visual
 --vim.cmd[[set ts=4 sw=0]]
-vim.wo.number = true
-vim.wo.relativenumber = true
 vim.o.inccommand = "split"
-vim.o.completeopt = "menuone"
+--vim.o.completeopt = "menuone"
 
 -- For lua (find file under cursor)
-vim.bo.suffixesadd = ".lua"
-vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
+--vim.bo.suffixesadd = ".lua"
+--vim.cmd[[set includeexpr=substitute(v:fname,'\\.','/','g')]]
 
+vim.wo.signcolumn = 'no'
 
 --Autocmd
 local augroups = require('utils.augroups')

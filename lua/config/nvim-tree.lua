@@ -25,4 +25,4 @@ vim.g.nvim_tree_icons = {
         symlink = "",
         }
       }
-vim.cmd[[command! E NvimTreeToggle]]
+vim.cmd[[command! L NvimTreeToggle]]
