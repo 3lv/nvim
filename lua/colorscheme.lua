@@ -1,1 +1,1 @@
-vim.cmd[[colorscheme femscheme]]
+vim.g.colors_name = 'femscheme'
