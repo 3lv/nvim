@@ -1,4 +1,4 @@
-local function augroup(definitions) -- {{{1
+local function augroups(definitions) -- {{{1
 	-- Create autocommand groups based on the passed definitions
 	--
 	-- The key will be the name of the group, and each definition
@@ -18,4 +18,4 @@ local function augroup(definitions) -- {{{1
 	end
 end
 
-return augroup
+return augroups

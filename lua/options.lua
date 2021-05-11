@@ -5,28 +5,34 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 ]]
 
-
--- Global options
-local options = {
-	-- Make vim look cleaner
+local global_options = {
 	guicursor = '',
 	showcmd = false,
 	showmode = false,
-	-- Basic options
 	termguicolors = true,
 	hidden = true,
 	inccommand = 'split',
+	cpoptions = 'aABceFs',
 }
--- Window options
-vim.cmd[[
-set undofile
-set signcolumn=no
-]]
+local bw_options = {
+	undofile = true,
+	signcolumn = 'no',
+}
 
--- Apply global options
-for opt, val in pairs(options) do
-	vim.o[opt] = val
+local function load_options (global, bw)
+	for k, v in pairs(global) do
+		vim.o[k] = v
+	end
+	for k, v in pairs(bw) do
+		if v == true or v == false then
+			vim.cmd('set '..k)
+		else
+			vim.cmd('set '..k..'='..v)
+		end
+	end
 end
+
+load_options(global_options, bw_options)
 
 --Autocmd
 local augroups = require('utils.augroups')
