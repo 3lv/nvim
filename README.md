@@ -4,9 +4,13 @@ Prerequires:
 
 ## Features
 *Clean! Minimal! Fast!*
+
 Keep the default keybindings and functions, but makes everything easier with intuitive, dynamic highlightings!
+
 Everything is improved, not changed!
+
 **Pink**👩‍🎤 colors
+
 Transparent changing statusline
 
 ## Install config
