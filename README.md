@@ -2,12 +2,18 @@ Prerequires:
 * nvim 0.5+
 * (optional)ccls
 
-### Backup old config
+## Features
+*Clean! Minimal! Fast!*
+Keep the default keybindings and functions, but makes everything easier with intuitive, dynamic highlightings!
+Everything is improved, not changed!
+**Pink**👩‍🎤 colors
+Transparent changing statusline
+
+## Install config
+##### Backup old config (if needed)
 ```bash
 mv ~/.config/nvim ~/.config/nvim-backup
 ```
-
-## Install config
 ```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
 nvim +PackerSync
