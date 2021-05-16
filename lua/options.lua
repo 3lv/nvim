@@ -1,6 +1,7 @@
 -- I ll live a better life without these options set
 -- clipboard, number, relativenumber
 
+-- OPTIONS:
 local global_options = {
 	guicursor = '',
 	showcmd = false,
@@ -18,21 +19,23 @@ local bw_options = {
 	signcolumn = 'no',
 }
 
-for k, v in pairs(global_options) do
-	vim.o[k] = v
-end
-for k, v in pairs(bw_options) do
-	if v == true or v == false then
-		vim.cmd('set '..k)
-	else
-		vim.cmd('set '..k..'='..v)
-	end
-end
-
---Autocmd
+-- AUGROUPS:
 local augroups = require('utils.augroups')
 augroups {
 	_general_settings = {
 		{ 'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'IncSearch', timeout = 200 })]] },
 	},
 }
+
+
+-- Apply the options
+for k, v in pairs(global_options) do
+	vim.o[k] = v
+end
+for k, v in pairs(bw_options) do
+	if type(v) == 'boolean' then
+		vim.api.nvim_command('set '..k)
+	else
+		vim.api.nvim_command('set '..k..'='..v)
+	end
+end
