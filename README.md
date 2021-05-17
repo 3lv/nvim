@@ -22,3 +22,15 @@ mv ~/.config/nvim ~/.config/nvim-backup
 git clone https://github.com/3lv/nvim ~/.config/nvim
 nvim +PackerSync
 ```
+
+
+### Config layout
+```lua
+~/.config/nvim/..
+📂 lua
+│ 📂 lib
+│ 📂 plugins
+│ 🌑 keymaps.lua
+└ 🌑 options.lua
+🌑 init.lua
+```
