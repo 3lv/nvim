@@ -1,9 +1,6 @@
 local config = { }
 
 function config.lspinstall()
-end
-
-function config.lspconfig()
 	require('lspinstall').setup { }
 	require('lspconfig').cpp.setup {
 		filetypes = { 'c', 'cpp' },
@@ -40,9 +37,12 @@ function config.lspconfig()
 	}
 end
 
+function config.lspconfig()
+end
+
 function config.nvim_tree()
 	require('nvim-tree.view').View.winopts.signcolumn = 'no'
-	vim.g.nvim_tree_ignore = { '.git', '.ccls-cache' }
+	vim.g.nvim_tree_ignore = { '.git', '.gitignore' }
 	vim.g.nvim_tree_disable_netrw = 0
 	vim.g.nvim_tree_indent_markers = 1
 	vim.g.nvim_tree_git_hl = 1

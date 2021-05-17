@@ -23,7 +23,10 @@ function Packer:load_packer()
 		vim.api.nvim_command('packadd packer.nvim')
 		packer = require('packer')
 	end
-	packer.init{ }
+	local compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.vim'
+	packer.init{
+		compile_path = compile_path
+	}
 	packer.reset()
 	local use = packer.use
 	self:load_plugins()
