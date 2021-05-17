@@ -1,10 +1,10 @@
 local config = { }
 
 function config.lspinstall()
-	require('lspinstall').setup { }
 end
 
 function config.lspconfig()
+	require('lspinstall').setup { }
 	require('lspconfig').cpp.setup {
 		filetypes = { 'c', 'cpp' },
 	}
