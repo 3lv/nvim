@@ -6,7 +6,6 @@ local global_options = {
 	guicursor = '',
 	showcmd = false,
 	showmode = false,
-	termguicolors = true,
 	pumblend = 20,
 	pumheight = 10,
 	hidden = true,
@@ -20,13 +19,12 @@ local bw_options = {
 }
 
 -- AUGROUPS:
-local augroups = require('utils.augroups')
+local augroups = require('lib.augroups')
 augroups {
 	_general_settings = {
 		{ 'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'IncSearch', timeout = 200 })]] },
 	},
 }
-
 
 -- Apply the options
 for k, v in pairs(global_options) do

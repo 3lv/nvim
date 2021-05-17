@@ -1,6 +1,16 @@
 local config = require('plugins.config')
 local plugins = { }
 
+-- LSP:
+--
+-- LspInstall:
+plugins['kabouzeid/nvim-lspinstall'] = {
+	config = config.lspinstall,
+}
+-- Lspconfig:
+plugins['neovim/nvim-lspconfig'] = {
+	config = config.lspconfig,
+}
 
 -- HIGHLIGHTING:
 --
