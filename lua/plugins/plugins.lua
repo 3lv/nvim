@@ -49,12 +49,14 @@ plugins['norcalli/nvim-colorizer.lua'] = {
 -- TREE: explorer
 plugins['kyazdani42/nvim-tree.lua'] = {
 	config = config.nvim_tree,
+	disable = true,
 }
 -- FZF: and livegrep
 plugins['nvim-telescope/telescope.nvim'] = {
 	config = config.telescope,
 	requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
 	cmd = { 'F', 'R', 'A' },
+	disable = true,
 }
 
 
@@ -63,6 +65,7 @@ plugins['nvim-telescope/telescope.nvim'] = {
 -- KEYMAP: adds an alternative kblayout, using the alt key
 plugins['3lv/femboyalt'] = {
 	config = config.femboyalt,
+	disable = true,
 }
 -- CPP: small extension (build and run, input/output toggle)
 plugins['3lv/femboycpp'] = {
