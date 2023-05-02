@@ -3,16 +3,9 @@ local plugins = { }
 
 -- LSP:
 --
--- Lspinstall:
-plugins['kabouzeid/nvim-lspinstall'] = {
-	config = config.lspinstall,
-	after = { 'nvim-lspconfig' },
-}
-
 -- Lspconfig:
 plugins['neovim/nvim-lspconfig'] = {
 	config = config.lspconfig,
-	disable = false,
 }
 
 
@@ -42,16 +35,15 @@ plugins['3lv/femboyf'] = {
 -- HEX: visualization
 plugins['norcalli/nvim-colorizer.lua'] = {
 	config = config.colorizer,
-	cmd = 'ColorizerToggle',
+	cmd = { 'ColorizerToggle' },
 }
 
 
 -- EXPLORER:
 --
 -- TREE: explorer
-plugins['kyazdani42/nvim-tree.lua'] = {
+plugins['nvim-tree/nvim-tree.lua'] = {
 	config = config.nvim_tree,
-	disable = true,
 }
 -- FZF: and livegrep
 plugins['nvim-telescope/telescope.nvim'] = {
@@ -73,6 +65,11 @@ plugins['3lv/femboyalt'] = {
 plugins['3lv/femboycpp'] = {
 	config = config.femboycpp,
 	ft = { 'cpp' },
+}
+-- RAINBOW
+plugins['3lv/femboyrainbow'] = {
+	config = config.femboyrainbow,
+	disable = false,
 }
 
 return plugins

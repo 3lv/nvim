@@ -1,56 +1,35 @@
 local config = { }
 
-function config.lspinstall()
-	require('lspinstall').setup { }
-	require('lspconfig').cpp.setup {
+function config.lspconfig()
+	require('lspconfig').ccls.setup {
 		filetypes = { 'c', 'cpp' },
 	}
-	local sumneko_root_path = vim.fn.stdpath('data')..'/lspinstall/lua/sumneko-lua/extension/server'
-	local sumneko_binary = sumneko_root_path..'/bin/'..'Linux'..'/lua-language-server'
-	require('lspconfig').lua.setup {
-		cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'};
-		settings = {
-		  Lua = {
-		    runtime = {
-		      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-		      version = 'LuaJIT',
-		      -- Setup your lua path
-		      path = vim.split(package.path, ';'),
-		    },
-		    diagnostics = {
-		      -- Get the language server to recognize the `vim` global
-		      globals = {'vim'},
-		    },
-		    workspace = {
-		      -- Make the server aware of Neovim runtime files
-		      library = {
-			[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-			[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-		      },
-		    },
-		    -- Do not send telemetry data containing a randomized but unique identifier
-		    telemetry = {
-		      enable = false,
-		    },
-		  },
+	require'lspconfig'.lua_ls.setup {
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
 		},
-	}
-end
-
-function config.lspconfig()
+	},
+}
 end
 
 function config.nvim_tree()
-	require('nvim-tree.view').View.winopts.signcolumn = 'no'
-	vim.g.nvim_tree_ignore = { '.git', '.gitignore' }
-	vim.g.nvim_tree_disable_netrw = 0
-	vim.g.nvim_tree_indent_markers = 1
-	vim.g.nvim_tree_git_hl = 1
-	vim.g.nvim_tree_show_icons = {
-		git = 1,
-		folders = 1,
-		files = 1,
-	}
+	require('nvim-tree').setup {}
 	vim.cmd[[command! L NvimTreeToggle]]
 end
 

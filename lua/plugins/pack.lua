@@ -10,8 +10,7 @@ end
 
 function Packer:load_plugins()
 	self.repos = { }
-	local path = 'plugins.plugins'
-	local list = require(path)
+	local list = require('plugins.plugins')
 	for repo, config in pairs(list) do
 		self.repos[#self.repos+1] = vim.tbl_extend('force', { repo }, config)
 	end
