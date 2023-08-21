@@ -1,0 +1,7 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "dac844ed617dda4f9ec85eb88e9629ad2add5e05" },
+  "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
+  "nvim-lspconfig": { "branch": "master", "commit": "67f151e84daddc86cc65f5d935e592f76b9f4496" },
+  "nvim-treesitter": { "branch": "master", "commit": "7c935d6bd5ecb36e7c6cf6678e1eaa38b85111f3" },
+  "ttyscheme": { "branch": "master", "commit": "5de8c9bd62f66628ba6b4177b45a38ed69663d96" }
+}

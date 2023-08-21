@@ -20,7 +20,7 @@ mv ~/.config/nvim ~/.config/nvim-backup
 ```
 ```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
-nvim +PackerSync
+nvim --headless "+Lazy! sync" +qa # optional
 ```
 
 

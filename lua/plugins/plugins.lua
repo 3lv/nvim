@@ -14,7 +14,7 @@ return {
 		-- :TSInstall all
 	},
 	{ -- COLORSCHEME
-		dir = '3lv/ttyscheme',
+		'3lv/ttyscheme',
 		lazy = false,
 		priority = 1000,
 		config = c.ttyscheme,
