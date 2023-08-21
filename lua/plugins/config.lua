@@ -9,13 +9,15 @@ end
 config.netrw()
 
 function config.lspconfig()
+	-- pacman -S ccls
+	-- bear -- make -B  to generate compile_commands.json in root dir
 	require('lspconfig').ccls.setup { }
-	--npm install -g typescript typescript-language-server
+	-- npm install -g typescript typescript-language-server
 	require('lspconfig').tsserver.setup { }
 	-- npm i -g vscode-langservers-extracted
 	require('lspconfig').html.setup { }
 	require('lspconfig').cssls.setup { }
-	--[[
+	-- pacman -S lua-language-server
 	require('lspconfig').lua_ls.setup {
 	settings = { Lua = {
 		runtime = {
@@ -24,55 +26,51 @@ function config.lspconfig()
 		},
 		diagnostics = {
 			-- Get the language server to recognize the `vim` global
-			globals = {'vim'},
+			globals = { 'vim' },
 		},
 		workspace = {
 			-- Make the server aware of Neovim runtime files
 			library = vim.api.nvim_get_runtime_file("", true),
-	--		checkThirdParty = false,
-		},
-		-- Do not send telemetry data containing a randomized but unique identifier
-		telemetry = {
-			enable = false,
+			checkThirdParty = false,
 		},
 	},},
 	}
-	--]]
+	-- TODO: add keybinding here
+	--vim.keymap.set('n', '', vim.diagnostic.open_float)
 	vim.api.nvim_create_autocmd('LspAttach', {
 		group = vim.api.nvim_create_augroup('UserLspConfig', { }),
 		callback = function(ev)
 			vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+			local opts = { buffer = ev.buf }
+			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 		end
-
 	})
-end
-
-function config.nvim_tree()
-	require('nvim-tree').setup {}
-	vim.cmd[[command! L NvimTreeToggle]]
 end
 
 function config.treesitter()
 	require('nvim-treesitter.configs').setup {
+		modules = {},
+		ensure_installed = "all",
+		ignore_install = {},
+		sync_install = false,
+		auto_install = false,
 		highlight = {
 			enable = true,
 		},
 	}
-	-- TODO add an automatic :TSUpdate
+end
+
+function config.ttyscheme()
+	vim.api.nvim_command('colorscheme ttyscheme')
 end
 
 function config.colorizer()
 	require('colorizer').setup { }
 end
 
-function config.lspsaga()
-	require('lspsaga').init_lsp_saga {
-		use_saga_diagnostic_sign = true,
-		error_sign = ' ',
-		warn_sign = ' ',
-	}
-end
-
+-- [[Not used]] {{{
 function config.web_devicons()
 	require('nvim-web-devicons').setup {
 		override = {
@@ -103,16 +101,8 @@ function config.femboyscheme()
 	vim.api.nvim_command('colorscheme femboyscheme')
 end
 
-function config.ttyscheme()
-	vim.api.nvim_command('colorscheme ttyscheme')
-end
-
 function config.femboystatus()
 	require('femboystatus').setup { }
-end
-
-function config.femboyalt()
-	require('femboyalt')
 end
 
 function config.femboycpp()
@@ -126,7 +116,6 @@ function config.femboyf()
 end
 
 function config.firenvim()
-	-- for firenvim firefox extensino
 	vim.g.firenvim_config = {
 		globalSettings = { alt = "all" },
 		localSettings = {
@@ -140,5 +129,8 @@ function config.firenvim()
 		}
 	}
 end
+-- }}}
 
 return config
+
+-- vi:fdm=marker

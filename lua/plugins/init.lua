@@ -1,2 +1,2 @@
 --require('plugins.disabled')
-require('plugins.pack')
+require('plugins.lazy')
