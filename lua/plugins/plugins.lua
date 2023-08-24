@@ -10,7 +10,6 @@ return {
 	{ -- Adds better syntax highlighting
 		'nvim-treesitter/nvim-treesitter',
 		config = c.treesitter,
-		build = 'TSUpdate',
 		-- :TSInstall all
 	},
 	{ -- COLORSCHEME
