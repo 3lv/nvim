@@ -5,7 +5,7 @@ return {
 	{ -- Lspconfig
 		"neovim/nvim-lspconfig",
 		config = c.lspconfig,
-	},
+	},--
 	-- [[HIGHLIGHTING]]:
 	{ -- Adds better syntax highlighting
 		'nvim-treesitter/nvim-treesitter',
@@ -14,6 +14,7 @@ return {
 	},
 	{ -- COLORSCHEME
 		'3lv/ttyscheme',
+		--dir = '~/workspace/nvim/ttyscheme',
 		lazy = false,
 		priority = 1000,
 		config = c.ttyscheme,
@@ -22,6 +23,12 @@ return {
 		'norcalli/nvim-colorizer.lua',
 		config = c.colorizer,
 		cmd = 'ColorizerToggle',
+	},
+	-- [[SCREEN KEYS]]:
+	{
+		--'3lv/screenkeys.nvim',
+		dir = '~/workspace/nvim/screenkeys.nvim',
+		config = c.screenkeys,
 	},
 	-- [[Disabled]] {{{
 	{ -- EASY movement with highlighting for unique characters

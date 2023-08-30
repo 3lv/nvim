@@ -70,6 +70,12 @@ function config.colorizer()
 	require('colorizer').setup { }
 end
 
+function config.screenkeys()
+	require('screenkeys').setup {
+		special_keys = false,
+	}
+end
+
 -- [[Not used]] {{{
 function config.web_devicons()
 	require('nvim-web-devicons').setup {
