@@ -19,6 +19,7 @@ end
 function lazy:load_lazy()
 	self:install_lazy()
 	local plugins = require("plugins.plugins")
+	vim.api.nvim_create_user_command("Plugins", "Lazy! sync", {})
 	require("lazy").setup(plugins)
 end
 

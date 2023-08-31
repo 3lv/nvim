@@ -1,26 +1,24 @@
 Prerequires:
-* nvim 0.5+
-* (optional)ccls
+* nvim
+
 
 ## Features
 *Clean! Minimal! Fast!*
 
-Keep the default keybindings and functions, but makes everything easier with intuitive, dynamic highlightings!
+Keep the default keybindings and functions, but makes everything easier with intuitive, dynamic highlighting!
 
 Everything is improved, not changed!
 
-**Pink**👩‍🎤 colors
-
-Transparent changing statusline
 
 ## Install config
 ##### Backup old config (if needed)
 ```bash
 mv ~/.config/nvim ~/.config/nvim-backup
 ```
+### Install nvim config + entire system
 ```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
-nvim --headless "+Lazy! sync" +qa # optional
+nvim --headless +Plugins +Dotfiles +qa && sudo ~/.install.sh
 ```
 
 

@@ -1,10 +1,20 @@
 local c = require('plugins.config')
 
 return {
+	-- [[Bootstrap system]]
+	{
+		--"3lv/bootstrap.nvim",
+		dir = "~/workspace/nvim/bootstrap.nvim/",
+		config = c.bootstrap,
+	},
 	-- [[LSP]]:
 	{ -- Lspconfig
 		"neovim/nvim-lspconfig",
-		config = c.lspconfig,
+		config = require('plugins.lsp'),
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		}
 	},--
 	-- [[HIGHLIGHTING]]:
 	{ -- Adds better syntax highlighting
@@ -26,8 +36,8 @@ return {
 	},
 	-- [[SCREEN KEYS]]:
 	{
-		--'3lv/screenkeys.nvim',
-		dir = '~/workspace/nvim/screenkeys.nvim',
+		'3lv/screenkeys.nvim',
+		--dir = '~/workspace/nvim/screenkeys.nvim',
 		config = c.screenkeys,
 	},
 	-- [[Disabled]] {{{
