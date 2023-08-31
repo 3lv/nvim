@@ -3,8 +3,8 @@ local c = require('plugins.config')
 return {
 	-- [[Bootstrap system]]
 	{
-		--"3lv/bootstrap.nvim",
-		dir = "~/workspace/nvim/bootstrap.nvim/",
+		"3lv/bootstrap.nvim",
+		--dir = "~/workspace/nvim/bootstrap.nvim/",
 		config = c.bootstrap,
 	},
 	-- [[LSP]]:

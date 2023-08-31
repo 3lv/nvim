@@ -18,7 +18,7 @@ mv ~/.config/nvim ~/.config/nvim-backup
 ### Install nvim config + entire system
 ```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
-nvim --headless +Plugins +Dotfiles +qa && sudo ~/.install.sh
+nvim --headless +Setup && sudo ~/.install.sh
 ```
 
 
