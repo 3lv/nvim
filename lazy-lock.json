@@ -1,10 +1,11 @@
 {
+  "bootstrap.nvim": { "branch": "master", "commit": "45a5c8a172f3da5ea4f29db1c3f696f1e7c10664" },
   "lazy.nvim": { "branch": "main", "commit": "2a9354c7d2368d78cbd5575a51a2af5bd8a6ad01" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "dfdd771b792fbb4bad8e057d72558255695aa1a7" },
   "mason.nvim": { "branch": "main", "commit": "0942198fb9a998b6ccee36fb8dd7495eb8ba659c" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-lspconfig": { "branch": "master", "commit": "a27356f1ef9c11e1f459cc96a3fcac5c265e72d6" },
-  "nvim-treesitter": { "branch": "master", "commit": "8e9cc89955ee5dcd9743ba47a9e6e44a78f648f8" },
-  "screenkeys.nvim": { "branch": "master", "commit": "3ea17ef5944dc56d954915dd594c2d2bfc83969f" },
-  "ttyscheme": { "branch": "master", "commit": "602d214c4307a94f893bf31828b556f2a05c2ec0" }
+  "nvim-treesitter": { "branch": "master", "commit": "691d73287a94e8ed82a383df82aabfe77ab4bcaa" },
+  "screenkeys.nvim": { "branch": "master", "commit": "0ba98836b730cc7f99d0a5e6fcdc39406f7c91d7" },
+  "ttyscheme": { "branch": "master", "commit": "759a6230991133fcc66e8694ec7c538b18e49dee" }
 }

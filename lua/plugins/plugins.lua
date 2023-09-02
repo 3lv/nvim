@@ -40,7 +40,7 @@ return {
 		--dir = '~/workspace/nvim/screenkeys.nvim',
 		config = c.screenkeys,
 	},
-	-- [[Disabled]] {{{
+	-- [[Not used]] {{{
 	{ -- EASY movement with highlighting for unique characters
 		'3lv/femboyf',
 		config = c.femboyf,

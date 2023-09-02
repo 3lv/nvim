@@ -1,5 +1,5 @@
 -- OPTIONS:
--- :set gcr=a:block nosc nosmd stal=0 scl=no lcs=tab:\|\ ph=10 icm=split mouse= cpo-=_ udf 
+-- :set gcr=a:block nosc nosmd stal=0 scl=no ph=10 icm=split mouse= cpo-=_ udf 
 local options = {
 	guicursor = 'a:block',
 	showcmd = false,
@@ -24,6 +24,7 @@ for k, v in pairs(options) do
 end
 
 -- Curstom clipboard that uses ~/.clipboard file whenever xclip/xsel are not available
+-- vim.fn.has("clipboard") == 0
 if vim.fn.expand("$TERM") == "linux" then
 	local cb = vim.fn.expand("$HOME/.clipboard") -- clipboard file location
 	vim.g.clipboard = {
@@ -41,13 +42,13 @@ if vim.fn.expand("$TERM") == "linux" then
 end
 
 -- AUGROUPS:
-local group = vim.api.nvim_create_augroup('GeneralSettings', {
+vim.api.nvim_create_augroup('GeneralSettings', {
 	clear = true,
 })
 vim.api.nvim_create_autocmd({'TextYankPost'}, {
 	group = 'GeneralSettings',
 	pattern = {'*'},
-	callback = function(ev)
+	callback = function(_)
 		require('vim.highlight').on_yank({ higroup = 'IncSearch', timeout = 200 });
 	end
 })
