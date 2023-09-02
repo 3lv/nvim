@@ -1,7 +1,5 @@
-#unused
-.config/
-.max-plugins
+# Temp files
+.s
 
-#from plugins
-plugin/
+# From plugins
 .netrwhist
