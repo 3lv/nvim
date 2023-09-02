@@ -1,5 +1,8 @@
 Prerequires:
 * nvim
+* git, curl, tar, unzip, gzip, c compiler (gcc/mingw gcc/ zig)
+* npm (for some LSP installations)
+* more for windows (TODO: complete this list)
 
 
 ## Features
@@ -24,7 +27,6 @@ nvim --headless +Setup && sudo ~/.install.sh
 ```
 ### Installation for Windows (Command Prompt) (Not tested)
 ```pwsh
-winget install -e --id zig.zig  # c compiler required
 curl -LO https://github.com/3lv/nvim/archive/master.zip
 tar -xf master.zip
 del master.zip
