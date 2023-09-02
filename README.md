@@ -27,11 +27,7 @@ nvim --headless +Setup && sudo ~/.install.sh
 ```
 ### Installation for Windows (Command Prompt) (Not tested)
 ```pwsh
-curl -LO https://github.com/3lv/nvim/archive/master.zip
-tar -xf master.zip
-del master.zip
-move nvim-master %userprofile%\Appdata\Local\nvim
-# restart ?command prompt?
+git clone https://github.com/3lv/nvim %userprofile%\AppData\Local\nvim
 nvim --headless +Plugins # optional
 ```
 
