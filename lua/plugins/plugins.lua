@@ -1,12 +1,6 @@
 local c = require('plugins.config')
 
 return {
-	-- [[Bootstrap system]]
-	{
-		"3lv/bootstrap.nvim",
-		--dir = "~/workspace/nvim/bootstrap.nvim/",
-		config = c.bootstrap,
-	},
 	-- [[LSP]]:
 	{ -- Lspconfig
 		"neovim/nvim-lspconfig",
