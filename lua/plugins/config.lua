@@ -5,6 +5,8 @@ function config.netrw()
 	vim.g.netrw_liststyle = 3; -- tree listing
 	vim.g.netrw_winsize = 20; -- win size 20%
 	vim.g.netrw_cursor = 0; -- no cursorline (cul)
+	vim.g.netrw_sort_sequence = ''; -- tree like order
+	vim.g.netrw_sort_options="i" -- ^^^
 end
 config.netrw()
 
@@ -16,7 +18,14 @@ end
 function config.treesitter()
 	require('nvim-treesitter.configs').setup {
 		modules = {},
-		ensure_installed = "all",
+		--ensure_installed = "all",
+		ensure_installed = {
+			"bash",
+			"c",
+			"cpp",
+			"make",
+			"python",
+		},
 		ignore_install = {},
 		sync_install = false,
 		auto_install = false,
