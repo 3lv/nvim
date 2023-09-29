@@ -12,7 +12,7 @@ local function setup_function()
 	-- mason setup
 	require("mason").setup {}
 	require("mason-lspconfig").setup {
-		automatic_installation = true
+		--automatic_installation = true
 	}
 	-- lspconfig setup
 	local lspconfig = require('lspconfig')
