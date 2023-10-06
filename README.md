@@ -18,17 +18,12 @@ Everything is improved, not changed!
 ### Install nvim config + plugins
 ```bash
 git clone https://github.com/3lv/nvim ~/.config/nvim
-nvim --headless +Plugins # optional
-```
-### Install full system
-```bash
-git clone https://github.com/3lv/nvim ~/.config/nvim
-nvim --headless +Setup && sudo ~/.install.sh
+nvim --headless +Setup # optional
 ```
 ### Installation for Windows (Command Prompt) (Not tested)
 ```pwsh
 git clone https://github.com/3lv/nvim %userprofile%\AppData\Local\nvim
-nvim --headless +Plugins # optional
+nvim --headless +Setup # optional
 ```
 
 
