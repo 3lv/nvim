@@ -1,4 +1,4 @@
-local config = { }
+local config = {}
 
 function config.netrw()
 	vim.g.netrw_banner = 0; -- no banner
@@ -9,11 +9,6 @@ function config.netrw()
 	vim.g.netrw_sort_options="i" -- ^^^
 end
 config.netrw()
-
-function config.bootstrap()
-	require('bootstrap').setup {
-	}
-end
 
 function config.treesitter()
 	require('nvim-treesitter.configs').setup {
@@ -40,7 +35,7 @@ function config.ttyscheme()
 end
 
 function config.colorizer()
-	require('colorizer').setup { }
+	require('colorizer').setup {}
 end
 
 function config.screenkeys()
@@ -49,7 +44,30 @@ function config.screenkeys()
 	}
 end
 
+function config.firenvim()
+	vim.g.firenvim_config = {
+		globalSettings = { alt = "all" },
+		localSettings = {
+			[".*"] = {
+				cmdline  = "neovim",
+				content  = "text",
+				priority = 0,
+				selector = "textarea",
+				takeover = "never"
+			}
+		}
+	}
+	if vim.g.started_by_firenvim then
+		vim.o.laststatus = 0
+		vim.o.cmdheight = 0
+	end
+end
+
 -- [[Not used]] {{{
+function config.bootstrap()
+	require('bootstrap').setup {}
+end
+
 function config.web_devicons()
 	require('nvim-web-devicons').setup {
 		override = {
@@ -64,7 +82,7 @@ function config.web_devicons()
 end
 
 function config.telescope()
-	require('telescope').setup { }
+	require('telescope').setup {}
 	vim.cmd[[
 	command! F lua require('telescope.builtin').find_files()
 	command! R lua require('telescope.builtin').live_grep()
@@ -81,31 +99,16 @@ function config.femboyscheme()
 end
 
 function config.femboystatus()
-	require('femboystatus').setup { }
+	require('femboystatus').setup {}
 end
 
 function config.femboycpp()
-	require('femboycpp').setup { }
+	require('femboycpp').setup {}
 end
 
 function config.femboyf()
 	require('femboyf').setup {
 		style = 'line',
-	}
-end
-
-function config.firenvim()
-	vim.g.firenvim_config = {
-		globalSettings = { alt = "all" },
-		localSettings = {
-			[".*"] = {
-				cmdline  = "neovim",
-				content  = "text",
-				priority = 0,
-				selector = "textarea",
-				takeover = "always"
-			}
-		}
 	}
 end
 -- }}}

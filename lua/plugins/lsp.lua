@@ -1,11 +1,13 @@
+-- TODO: configure all servers just if Global Variable is set
 -- does not include manually setup servers
 local servers = {
 	-- bear -- make -B  to generate compile_commands.json in root dir
 	"clangd",
-	"tsserver",
-	"html",
 	"cssls",
+	"html",
 	"pyright",
+	"rust_analyzer",
+	"tsserver",
 }
 
 local function setup_function()

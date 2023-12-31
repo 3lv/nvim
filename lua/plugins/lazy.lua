@@ -1,4 +1,4 @@
-local lazy = { }
+local lazy = {}
 
 -- Bootstrap lazy.nvim, the plugin manager
 function lazy:install_lazy()

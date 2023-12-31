@@ -11,13 +11,7 @@ local options = {
 	mouse = '',
 	cpoptions = 'aABceFs',
 	undofile = true,
-	--laststatus = 1,
-	--listchars = 'tab:| ',
-	--pumblend = 20,
-	--vvv bad options vvv--
-	--clipboard = "unnamedplus"
-	--number = true,
-	--relativenumber = true,
+	guifont = 'Fira_Code:h9',
 }
 for k, v in pairs(options) do
 	vim.o[k] = v
@@ -25,22 +19,20 @@ end
 
 -- Curstom clipboard that uses ~/.clipboard file whenever xclip/xsel are not available
 -- vim.fn.has("clipboard") == 0
-if vim.fn.expand("$TERM") == "linux" then
-	local cb = vim.fn.expand("$HOME/.clipboard") -- clipboard file location
-	vim.g.clipboard = {
-		name = "myClipboard",
-		copy = {
-			["+"] = { "tee", cb },
-			["*"] = { "tee", cb },
-		},
-		paste = {
-			["+"] = { "cat", cb },
-			["*"] = { "cat", cb },
-		},
-		cache_enabled = 1,
-	}
-end
-
+-- vim.fn.expand("$TERM") == "linux"
+local cb = vim.fn.expand("$HOME/.clipboard") -- clipboard file location
+vim.g.clipboard = {
+	name = "myClipboard",
+	copy = {
+		["+"] = { "tee", cb },
+		["*"] = { "tee", cb },
+	},
+	paste = {
+		["+"] = { "cat", cb },
+		["*"] = { "cat", cb },
+	},
+	cache_enabled = 1,
+}
 -- AUGROUPS:
 vim.api.nvim_create_augroup('GeneralSettings', {
 	clear = true,

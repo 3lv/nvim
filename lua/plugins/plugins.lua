@@ -34,6 +34,12 @@ return {
 		--dir = '~/workspace/nvim/screenkeys.nvim',
 		config = c.screenkeys,
 	},
+	{ -- FIREFOX EXTENSTION
+		'glacambre/firenvim',
+		config = c.firenvim,
+		build = function() vim.fn['firenvim#install'](0) end,
+		enabled = true,
+	},
 	-- [[Not used]] {{{
 	{ -- EASY movement with highlighting for unique characters
 		'3lv/femboyf',
@@ -64,12 +70,6 @@ return {
 		enabled = false,
 	},
 	-- MISC:
-	{ -- FIREFOX EXTENSTION
-		'glacambre/firenvim',
-		config = c.firenvim,
-		build = function() vim.fn['firenvim#install'](0) end,
-		enabled = false,
-	},
 	{ -- RAINBOW
 		'3lv/femboyrainbow',
 		config = c.femboyrainbow,
