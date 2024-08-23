@@ -11,7 +11,7 @@ local options = {
 	mouse = '',
 	cpoptions = 'aABceFs',
 	undofile = true,
-	guifont = 'Fira_Code:h9',
+	guifont = 'FiraMono Nerd Font:h9.5',
 }
 for k, v in pairs(options) do
 	vim.o[k] = v

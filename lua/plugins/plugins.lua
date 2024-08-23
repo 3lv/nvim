@@ -10,18 +10,47 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		}
 	},--
+	{
+		"hrsh7th/nvim-cmp",
+		config = c.cmp,
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+		},
+	},
 	-- [[HIGHLIGHTING]]:
 	{ -- Adds better syntax highlighting
 		'nvim-treesitter/nvim-treesitter',
 		config = c.treesitter,
 		-- :TSInstall all
 	},
+	{
+		-- REQUIRES npm and yarn
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		-- THIS MIGHT NOT WORK
+		build = function() vim.fn["mkdp#util#install"]() end,
+		config = function()
+			vim.cmd([[
+				function OpenMarkdownPreview (url)
+					execute "silent ! firefox --new-window " . a:url
+				endfunction
+				let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+			]])
+		end,
+	},
+
 	{ -- COLORSCHEME
 		'3lv/ttyscheme',
 		--dir = '~/workspace/nvim/ttyscheme',
 		lazy = false,
 		priority = 1000,
 		config = c.ttyscheme,
+	},
+	{ -- COLORSCHEME
+		'3lv/femboyscheme',
 	},
 	{ -- HEX visualization
 		'norcalli/nvim-colorizer.lua',
@@ -46,14 +75,17 @@ return {
 		config = c.femboyf,
 		enabled = false,
 	},
-	{ -- ICONS for every filetype
-		'kyazdani42/nvim-web-devicons',
-		config = c.web_devicons,
-		enabled = false,
-	},
 	{ -- STATUSLINE
 		'3lv/femboystatus',
 		config = c.femboystatus,
+		dependencies = {
+			"kyazdani42/nvim-web-devicons",
+		},
+		enabled = false,
+	},
+	{ -- ICONS for every filetype
+		'kyazdani42/nvim-web-devicons',
+		config = c.web_devicons,
 		enabled = false,
 	},
 	-- EXPLORER:
@@ -73,7 +105,7 @@ return {
 	{ -- RAINBOW
 		'3lv/femboyrainbow',
 		config = c.femboyrainbow,
-		enabled = false,
+		enabled = true,
 	},
 	-- }}}
 }
