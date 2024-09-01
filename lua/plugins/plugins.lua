@@ -11,6 +11,14 @@ return {
 		}
 	},--
 	{
+		"thosakwe/vim-flutter",
+		config = function()
+			vim.cmd[[
+				call FlutterMenu()
+			]]
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = c.cmp,
 		dependencies = {
@@ -33,12 +41,12 @@ return {
 		-- THIS MIGHT NOT WORK
 		build = function() vim.fn["mkdp#util#install"]() end,
 		config = function()
-			vim.cmd([[
+			vim.cmd[[
 				function OpenMarkdownPreview (url)
 					execute "silent ! firefox --new-window " . a:url
 				endfunction
 				let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-			]])
+			]]
 		end,
 	},
 

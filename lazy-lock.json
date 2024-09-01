@@ -15,5 +15,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "037ea0901ce9a28cfcaa36302618f06d2e164fbf" },
   "nvim-treesitter": { "branch": "master", "commit": "bfb50de9cb0673a3bff620d881f690fb7e0d1328" },
   "screenkeys.nvim": { "branch": "master", "commit": "0ba98836b730cc7f99d0a5e6fcdc39406f7c91d7" },
-  "ttyscheme": { "branch": "master", "commit": "e4151cab1c44ce658ca80f58e458b86aa8564ff7" }
+  "ttyscheme": { "branch": "master", "commit": "e4151cab1c44ce658ca80f58e458b86aa8564ff7" },
+  "vim-flutter": { "branch": "master", "commit": "422ff301a4fe7b989b79b83adf95add0c71ffda5" }
 }

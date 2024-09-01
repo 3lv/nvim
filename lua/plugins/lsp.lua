@@ -19,6 +19,7 @@ local auto_setup_servers = {
 			}
 		},
 	},},
+	"dartls",
 	"html",
 	"pyright",
 	"rust_analyzer",
