@@ -21,6 +21,12 @@ local auto_setup_servers = {
 	},},
 	"dartls",
 	"html",
+	["matlab_ls"] = { settings = { MATLAB = {
+		indexWorkspace = false,
+		installPath = "/home/vlad/.matlab",
+		matlabConnectionTiming = "onStart",
+		telemetry = true
+	},},},
 	"pyright",
 	"rust_analyzer",
 	["svelte"] = {
